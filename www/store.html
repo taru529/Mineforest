@@ -1,0 +1,219 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="Content-Security-Policy" content="default-src * data: gap: content: https://ssl.gstatic.com; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'">
+    <title>Monaca Education ダイレクトプレビュー</title>
+    <script src="components/loader.js"></script>
+    <link rel="stylesheet" href="components/loader.css">
+    <link rel="stylesheet" href="css/store.css">
+    <script src="js/education.js" defer></script>
+    <script src="js/config.js" defer></script>
+    <script src="js/main.js" defer></script>
+    <script>
+    </script>
+</head>
+
+<body style="width:100%;padding:0;margin:0;">
+    <div><span id="kane">0</span>coins</div>
+    <div class="scroll">
+        <img src="img/tree1.png" class="tree">
+        <img src="img/tree2.png" class="tree">
+        <img src="img/tree3.png" class="tree">
+        <span class="moji" onclick="buy1()">Ⓜ250</span>
+        <span class="moji" onclick="buy2()">Ⓜ500</span>
+        <span class="moji" onclick="buy3()">Ⓜ750</span>
+        <br>
+        <img src="img/tree4.png" class="tree">
+        <img src="img/tree5.png" class="tree">
+        <img src="img/tree6.png" class="tree">
+        <span class="moji" onclick="buy4()">Ⓜ450</span>
+        <span class="moji" onclick="buy5()">Ⓜ450</span>
+        <span class="moji" onclick="buy6()">Ⓜ500</span>
+        <br>
+        <img src="img/ftree1.png" class="tree">
+        <img src="img/ftree2.png" class="tree">
+        <img src="img/ftree3.png" class="tree">
+        <br>
+        <span class="moji" onclick="buy7()">Ⓜ500</span>
+        <span class="moji" onclick="buy8()">Ⓜ600</span>
+        <span class="moji" onclick="buy9()">Ⓜ650</span>
+        <br>
+        <img src="img/ftree4.png" class="tree">
+        <img src="img/ftree5.png" class="tree">
+        <img src="img/bush1.png" class="tree">
+        <br>
+        <span class="moji" onclick="buy10()">Ⓜ600</span>
+        <span class="moji" onclick="buy11()">Ⓜ650</span>
+        <span class="moji" onclick="buy12()">Ⓜ770</span>
+    </div>
+    <script>
+        var stg
+
+        function buy1() {
+            if (coins < 250) {
+                stg = 250 - coins;
+                alert(stg + "コイン不足しています");
+            } else {
+                coins = coins - 250;
+                kane.innerHTML = coins;
+                jsoncoins = JSON.stringify(coins);
+                localStorage.setItem("scoins", jsoncoins);
+            }
+        }
+
+        function buy2() {
+            if (coins < 500) {
+                stg = 500 - coins;
+                alert(stg + "コイン不足しています");
+            } else {
+                coins = coins - 500;
+                kane.innerHTML = coins;
+                jsoncoins = JSON.stringify(coins);
+                localStorage.setItem("scoins", jsoncoins);
+            }
+        }
+
+        function buy3() {
+            if (coins < 750) {
+                stg = 750 - coins;
+                alert(stg + "コイン不足しています");
+            } else {
+                coins = coins - 750;
+                kane.innerHTML = coins;
+                jsoncoins = JSON.stringify(coins);
+                localStorage.setItem("scoins", jsoncoins);
+            }
+        }
+
+        function buy4() {
+            if (coins < 450) {
+                stg = 450 - coins;
+                alert(stg + "コイン不足しています");
+            } else {
+                coins = coins - 450;
+                kane.innerHTML = coins;
+                jsoncoins = JSON.stringify(coins);
+                localStorage.setItem("scoins", jsoncoins);
+            }
+        }
+
+        function buy5() {
+            if (coins < 450) {
+                stg = 450 - coins;
+                alert(stg + "コイン不足しています");
+            } else {
+                coins = coins - 450;
+                kane.innerHTML = coins;
+                jsoncoins = JSON.stringify(coins);
+                localStorage.setItem("scoins", jsoncoins);
+            }
+        }
+
+        function buy6() {
+            if (coins < 500) {
+                stg = 500 - coins;
+                alert(stg + "コイン不足しています");
+            } else {
+                coins = coins - 500;
+                kane.innerHTML = coins;
+                jsoncoins = JSON.stringify(coins);
+                localStorage.setItem("scoins", jsoncoins);
+            }
+        }
+
+        function buy7() {
+            if (coins < 500) {
+                stg = 500 - coins;
+                alert(stg + "コイン不足しています");
+            } else {
+                coins = coins - 500;
+                kane.innerHTML = coins;
+                jsoncoins = JSON.stringify(coins);
+                localStorage.setItem("scoins", jsoncoins);
+            }
+        }
+
+        function buy8() {
+            if (coins < 600) {
+                stg = 600 - coins;
+                alert(stg + "コイン不足しています");
+            } else {
+                coins = coins - 600;
+                kane.innerHTML = coins;
+                jsoncoins = JSON.stringify(coins);
+                localStorage.setItem("scoins", jsoncoins);
+            }
+        }
+
+        function buy9() {
+            if (coins < 650) {
+                stg = 650 - coins;
+                alert(stg + "コイン不足しています");
+            } else {
+                coins = coins - 650;
+                kane.innerHTML = coins;
+                jsoncoins = JSON.stringify(coins);
+                localStorage.setItem("scoins", jsoncoins);
+            }
+        }
+
+                function buy10() {
+            if (coins < 600) {
+                stg = 600 - coins;
+                alert(stg + "コイン不足しています");
+            } else {
+                coins = coins - 600;
+                kane.innerHTML = coins;
+                jsoncoins = JSON.stringify(coins);
+                localStorage.setItem("scoins", jsoncoins);
+            }
+        }
+
+                function buy11() {
+            if (coins < 650) {
+                stg = 650 - coins;
+                alert(stg + "コイン不足しています");
+            } else {
+                coins = coins - 650;
+                kane.innerHTML = coins;
+                jsoncoins = JSON.stringify(coins);
+                localStorage.setItem("scoins", jsoncoins);
+            }
+        }
+
+                function buy12() {
+            if (coins < 770) {
+                stg = 770 - coins;
+                alert(stg + "コイン不足しています");
+            } else {
+                coins = coins - 770;
+                kane.innerHTML = coins;
+                jsoncoins = JSON.stringify(coins);
+                localStorage.setItem("scoins", jsoncoins);
+            }
+        }
+    </script>
+    <div style="position:absolute;bottom:0;display:flex;width:100%;border:solid 1px 0px 0px 0px;border-bottom:0;height:15%;" class="remove">
+        <button class="under-btn"><img src="img/enpitu.png" id="under-image" class="remove" onclick = "location.href='./index.html'"></button>
+        <button class="under-btn" style="border-left:none;border-right:none;"><img src="img/omise.png" id="under-image" class="remove"></button>
+    </div>
+    <script>
+        var savecoins = localStorage.getItem("scoins");
+        coins = JSON.parse(savecoins);
+        var savekane = localStorage.getItem("skane");
+        kane = JSON.parse(savekane);
+        jsonkane = JSON.stringify(kane);
+        localStorage.setItem("skane", jsonkane);
+        jsoncoins = JSON.stringify(coins);
+        localStorage.setItem("scoins", jsoncoins);
+        if (coins !== 0) {
+            kane = document.getElementById('kane');
+            kane.innerHTML = coins;
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,124 @@
+html,body {
+    user-select: none;
+    height: 100%;
+    overflow: hidden;
+}
+
+#under-image {
+    width: 50%;
+    height: auto;
+}
+
+.under-btn{
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border-bottom: none;
+}
+
+#enpitu:hover {
+    background: #fcfcec;
+}
+
+#omise {
+    width: 30%;
+    height: 9%;
+    margin: auto;
+}
+
+#omise:hover {
+    background: #fcfcec;
+}
+
+#tikyuu {
+    width: 30%;
+    height: 9%;
+    margin: auto;
+}
+
+#tikyuu:hover {
+    background: #fcfcec;
+}
+
+#createbutton {
+    background: transparent;
+    border: none;
+    position: relative;
+    width: 60%;
+    height: 300%;
+    font-size: 120%;
+    font-weight: 400;
+    color: #000000;
+    background: #1e90ff;
+    transition: all 0.5s;
+    display: inline-block;
+    text-decoration: none;
+    text-align: center;
+    padding: 1%;
+    font-family: "Comic Sans MS";
+}
+
+#createbutton:hover {
+    background: #2e77ff;
+    font-weight: 500;
+}
+
+#createbutton:hover::after {
+    opacity: 1;
+    transform: scale(1,1);
+}
+
+#ka-soru {
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    top: 360px;
+    right: 5px;
+}
+
+#me {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    top: 0px;
+    right: 0px;
+}
+
+ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.navi {
+    position: relative;
+    background-size: 0px;
+    background-color: #eedcb3;
+      right: 40%;
+      width: 40%;
+      height: 60%;
+      overflow-y: scroll;
+      transition: all 0.5s;
+      scrollbar-width: none;
+    z-index: calc(infinity);
+}
+
+.open {
+    right: 0px;
+}
+
+.invisible {
+    visibility:hidden;
+}
+
+.opacity {
+    opacity: 0;
+}
+
+.object {
+    width: 100%;
+    height: 100%;
+    cursor: grab;
+    user-drag: none;
+	-webkit-user-drag: none;
+	-moz-user-select: none;
+}
