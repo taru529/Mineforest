@@ -17,16 +17,29 @@
         var coins = 0;
         var jsonkane;
         var jsoncoins;
+        let items = [];
+        for (let i = 0; i < 12; i++) {
+            items.push(0);
+        }
+
+        let items2 = [];
+        for (let i = 0; i < 12; i++) {
+            items2.push([]);
+        }
+        console.log(items2);
+
         var kane = document.getElementById('kane');
 
-            window.setInterval(icr, 1000);
+        window.setInterval(icr, 1000);
 
         function icr() {
             coins++;
             kane = document.getElementById('kane');
             kane.innerHTML = coins;
+
             jsonkane = JSON.stringify(kane);
             localStorage.setItem("skane", jsonkane);
+
             jsoncoins = JSON.stringify(coins);
             localStorage.setItem("scoins", jsoncoins);
         }
@@ -41,38 +54,29 @@
     <nav class="navi remove">
         <ul class="objectlist">
             <li><img src="img/tree1.png" class="object"></li>
-            <li><img src="img/tree2.png" class="object"></li>
-            <li><img src="img/tree3.png" class="object"></li>
-            <li><img src="img/tree4.png" class="object"></li>
-            <li><img src="img/tree5.png" class="object"></li>
-            <li><img src="img/tree6.png" class="object"></li>
-            <li><img src="img/ftree1.png" class="object"></li>
-            <li><img src="img/ftree2.png" class="object"></li>
-            <li><img src="img/ftree3.png" class="object"></li>
-            <li><img src="img/ftree4.png" class="object"></li>
-            <li><img src="img/ftree5.png" class="object"></li>
-            <li><img src="img/bush1.png" class="object"></li>
+            <li><img src="img/tree2.png" class="object" id="goods2"></li>
+            <li><img src="img/tree3.png" class="object" id="goods3"></li>
+            <li><img src="img/tree4.png" class="object" id="goods4"></li>
+            <li><img src="img/tree5.png" class="object" id="goods5"></li>
+            <li><img src="img/tree6.png" class="object" id="goods6"></li>
+            <li><img src="img/ftree1.png" class="object" id="goods7"></li>
+            <li><img src="img/ftree2.png" class="object" id="goods8"></li>
+            <li><img src="img/ftree3.png" class="object" id="goods9"></li>
+            <li><img src="img/ftree4.png" class="object" id="goods10"></li>
+            <li><img src="img/ftree5.png" class="object" id="goods11"></li>
+            <li><img src="img/bush1.png" class="object" id="goods12"></li>
         </ul>
     </nav>
     <div style="position:absolute;widht:100%;height:100%;top:80%;left:30%;">
-        <div class = "remove"><span id="kane">0</span>coins</div>
+        <div class="remove" style = "z-index: calc(infinity);"><span id="kane">0</span>coins</div>
     </div>
-    <img src="img/ka-soru.png" id="ka-soru" class="remove" style="top:80%;width:9%;height:4%;z-index: calc(infinity);">
     <div style="position:absolute;bottom:0;display:flex;width:100%;border:solid 1px 0px 0px 0px;border-bottom:0;height:15%;" class="remove">
         <button class="under-btn" style="z-index: calc(infinity);"><img src="img/enpitu.png" id="under-image" class="remove"></button>
         <button class="under-btn" style="border-left:none;border-right:none;z-index: calc(infinity);"><img src="img/omise.png" id="under-image" class="remove"onclick = "location.href='./store.html'"></button>
         </dvi>
-        <audio id="bgm">
-        <source src = "audio/BGM.mp3" loop>
+        <audio controls autoplay loop src="audio/BGM.mp3" style = "display:none;"></audio>
     </audio>
         <script>
-            var num = 0;
-            //BGMの再生
-            function audio() {
-                //完成後消すvar audio = document.getElementById('bgm').play();
-            }
-            audio();
-
             //メニューバーの表示
             function menu() {
                 var navi = document.getElementsByClassName('navi');
@@ -89,13 +93,9 @@
                 remove[5].classList.toggle('invisible');
                 remove[6].classList.toggle('invisible');
                 remove[7].classList.toggle('invisible');
-                remove[8].classList.toggle('invisible');
                 if (num == 1) {
                     num = 0;
                     document.getElementById("me").src = "img/eye2.png";
-                } else {
-                    num++;
-                    document.getElementById("me").src = "img/eye1.png";
                 }
             }
             //画像の移動
@@ -109,6 +109,18 @@
             let onc = false;
             let copyImg = null;
 
+            function saveItems() {
+                let J_items = JSON.stringify(items);
+                localStorage.setItem("items", J_items);
+            }
+
+            function saveItems2() {
+                let J_items = JSON.stringify(items2);
+                localStorage.setItem("items2", J_items);
+            }
+
+            let now_idx = 0;
+
             //元画像を消す
             function RemoveImg(e) {
                 if (e.target.className == "object") {
@@ -116,19 +128,31 @@
                     var navi = document.getElementsByClassName('navi');
                     navi[0].classList.toggle('open');
                     let clickImg = e.target;
-                    clickImg.style.opacity = "0";
-                    clickImg.style.pointerEvents = "none";
                     copyImg = CopyImg(clickImg);
-                    document.body.appendChild(copyImg);
-                    copyImg.style.position = "absolute";
-                    copyImg.style.pointerEvents = "none";
                     start_x = Number(e.pageX) - (clickImg.getBoundingClientRect().left);
                     start_y = Number(e.pageY) - (clickImg.getBoundingClientRect().top);
-                    console.log(start_x + " : " + start_y);
+                    PutImg(copyImg, e.pageX - start_x, e.pageY - start_y);
 
-                    copyImg.style.left = e.pageX - start_x;
-                    copyImg.style.top = e.pageY - start_y;
+                    let idx = Array.from(document.getElementsByClassName("objectlist")[0].children).indexOf(clickImg.parentElement);
+                    now_idx = idx;
+
+                    if (items[idx] > 0) {
+                        items[idx]--;
+                        saveItems();
+                        if (items[idx] <= 0) {
+                            var a2 = document.getElementsByClassName("objectlist")[0].children[idx].firstChild;
+                            a2.style.opacity = "0";
+                            a2.style.pointerEvents = "none";
+                        }
+                    }
                 }
+            }
+
+            function PutImg(img, x, y) {
+                document.body.appendChild(img);
+                img.style.pointerEvents = "none";
+                img.style.left = x;
+                img.style.top = y;
             }
 
             //カーソルに画像を追尾させる
@@ -141,12 +165,13 @@
 
             //離したら終了
             document.addEventListener("mouseup", () => {
+                if (onc) {
+                    console.log(copyImg.style.left + " : " + copyImg.style.top);
+                    items2[now_idx].push([copyImg.style.left, copyImg.style.top]);
+                    saveItems2();
+                }
                 onc = false;
             });
-
-            function Homing(element) {
-
-            }
 
             //画像を再挿入
             function CopyImg(motoImg) {
@@ -158,16 +183,47 @@
                 return copyImg;
             }
 
-            //再代入
+            //値の保存
             var savecoins = localStorage.getItem("scoins");
             coins = JSON.parse(savecoins);
             var savekane = localStorage.getItem("skane");
             kane = JSON.parse(savekane);
+
+            if (localStorage.hasOwnProperty("items")) {
+                items = JSON.parse(localStorage.getItem("items"));
+                console.log(items);
+            }
+
+            if (localStorage.hasOwnProperty("items2")) {
+                items2 = JSON.parse(localStorage.getItem("items2"));
+                console.log(items2);
+            }
+
             if (coins !== 0) {
                 kane = document.getElementById('kane');
                 kane.innerHTML = coins;
             }
+
+            Array.from(document.getElementsByClassName("objectlist")[0].children).forEach((value, index) => {
+                if (items[index] == 0) {
+                    let a = value.firstChild;
+                    a.style.opacity = "0";
+                    a.style.pointerEvents = "none";
+                }
+            });
+
+            //画像の配置
+            for (let c = 0; c < 12; c++) {
+                for (let l = 0; l < items2[c].length; l++) {
+                    console.log(c + " : " + l);
+                    let copyImg = CopyImg(document.getElementsByClassName("objectlist")[0].children[c].firstChild);
+                    copyImg.style.height = "auto";
+                    PutImg(copyImg, items2[c][l][0], items2[c][l][1]);
+                }
+            }
         </script>
 </body>
+
+</html>
 
 </html>
